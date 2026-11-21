@@ -1,3 +1,15 @@
-Mariane, seu repositório fechou em 1,6 de 2,5. Na aula 2, a API passou nos 10 testes no commit 3a5419e, de 16/10. Na aula 3, a migração para SQLite passou em 7 de 7 testes e em 0 de 3 exercícios (melhor resultado no commit 3a5419e, de 16/10). Faltou: nos exercícios, o GET /treinos/total; o filtro ?minimo=; e a ordenação do maior para o menor. Os opcionais da aula 3 (busca, resumo e id inválido) funcionaram, o que somou +0,1 na nota. Na aula 4, 4 de 8 testes passaram no commit 82fb92f, de 16/10. Faltou: o banco.js não existe ou não exporta a conexão; o servidor.js ainda tem SQL ou conexão com o banco, e deveria só ligar as rotas; o teste-banco2.js não existe ou termina com erro; e o teste-service.js não existe ou termina com erro. A regra dos 180 minutos, que devia estar em validarTreino no treinosService.js, não foi encontrada. Na aula 5, você criou login, perfil e logout, mas nenhum dos 8 testes passou, porque um dos arquivos importa ../banco.js, e esse arquivo não existe com esse nome (confira maiúsculas e nome da pasta). A entrega contou, mas sem pontuar nos testes. A aula 6 não foi entregue: não há bcrypt no package.json, nem criarUsuarios.js, e a senha continua em texto puro. Para entregar, falta instalar o bcrypt, gerar o hash no criarUsuarios.js, guardar só o senha_hash e comparar com await bcrypt.compare no authService.
+Mariane, sua nota do repositório ficou em 3,0 de 3,0.
 
-Se tiver dúvida, fala na próxima aula.
+Olhei todos os seus commits até 20/11 às 23h59 e fiquei com o melhor resultado de cada aula, então o que você reentregou já entrou na conta. Cada aula vale um quinto da nota, metade pela entrega e metade pelos testes que passaram.
+
+Na aula 2 sua API passou nos 10 testes, no commit 85541ad de 11/11.
+
+Na aula 3 passaram 7 de 7 testes do SQLite, no commit 1b04239 de 11/11. Os 3 exercícios (total, filtro mínimo e ordenação) funcionaram. Dos opcionais (busca, resumo e id inválido) funcionaram 3, e isso rendeu bônus.
+
+Na aula 4 passaram 8 de 8 testes, no commit 1b04239 de 11/11. A regra dos 180 minutos está no treinosService.js.
+
+Na aula 5 passaram 7 de 8 testes, no commit 1b04239 de 11/11. Os testes mostram que as rotas de treino não pedem login.
+
+Na aula 6 passaram 10 de 10 testes, no commit 1b04239 de 11/11. O testes.http com login, perfil e logout está lá.
+
+As notas estão fechadas. Se tiver dúvida, fala na próxima aula.
