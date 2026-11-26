@@ -15,10 +15,17 @@ export default function Login({ onEntrar }) {
   // Regras: usuario nao pode ser vazio (cuidado com espacos: trim())
   //         e a senha precisa ter pelo menos 4 caracteres.
   // ---------------------------------------------------------------
-  function validar() {
-    return '';
+function validar() {
+  if (usuario.trim() === '') {
+    return 'Informe o usuário.';
   }
 
+  if (senha.length < 4) {
+    return 'A senha deve ter pelo menos 4 caracteres.';
+  }
+
+  return '';
+}
   // Estas duas funcoes ja estao prontas: elas falam com a API.
   async function entrar() {
     const r = await chamar('POST', '/login', { usuario, senha });
@@ -80,7 +87,12 @@ export default function Login({ onEntrar }) {
           feito, o que voce digita nao chega no estado e o login falha. */}
       <div className="campo">
         <label htmlFor="usuario">Usuário</label>
-        <input id="usuario" autoComplete="username" />
+       <input
+  id="usuario"
+  autoComplete="username"
+  value={usuario}
+  onChange={(evento) => setUsuario(evento.target.value)}
+/>
       </div>
 
       <div className="campo">
