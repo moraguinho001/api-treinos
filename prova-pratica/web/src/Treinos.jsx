@@ -86,10 +86,29 @@ export default function Treinos({ onSessaoExpirada }) {
   //   - duracao precisa ser um numero inteiro de 1 a 180
   // Em caso de problema: setErro('texto') e NAO chame enviarNovoTreino.
   // ---------------------------------------------------------------
-  function aoEnviar(evento) {
-    evento.preventDefault();
-    enviarNovoTreino();
+ function aoEnviar(evento) {
+  evento.preventDefault();
+
+  if (nome.trim() === '') {
+    setErro('Informe o nome do treino.');
+    return;
   }
+
+  const minutos = Number(duracao);
+
+  if (
+    duracao.trim() === '' ||
+    !Number.isInteger(minutos) ||
+    minutos < 1 ||
+    minutos > 180
+  ) {
+    setErro('A duração deve ser um número inteiro de 1 a 180 minutos.');
+    return;
+  }
+
+  setErro('');
+  enviarNovoTreino();
+}
 
   return (
     <>
@@ -135,15 +154,25 @@ export default function Treinos({ onSessaoExpirada }) {
 
         {carregando && <p className="suave">Carregando...</p>}
 
-        {/* TAREFA 7: renderizacao condicional do estado vazio.
-            Quando NAO esta carregando e a lista esta vazia, mostre
-            o texto "Nenhum treino ainda. Cadastre o primeiro acima."
-            (className="suave"). */}
+     {!carregando && treinos.length === 0 && (
+  <p className="suave">
+    Nenhum treino ainda. Cadastre o primeiro acima.
+  </p>
+)}
 
         {/* TAREFA 8: a lista. Use treinos.map(...) para gerar um
             <CartaoTreino /> por treino, com key={t.id}, passando as props
             treino, onConcluir={concluir} e onApagar={apagar}. */}
-        <ul className="lista"></ul>
+       <ul className="lista">
+  {treinos.map((treino) => (
+    <CartaoTreino
+      key={treino.id}
+      treino={treino}
+      onConcluir={concluir}
+      onApagar={apagar}
+    />
+  ))}
+</ul>
       </section>
     </>
   );
